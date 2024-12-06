@@ -76,7 +76,7 @@ const listaAlunoCurso = function(curso){
 
     arquivo_aluno.alunos.forEach(function(item){
         item.curso.forEach(function(item2){
-            if(item2.sigla == String(curso).toUpperCase()){
+            if(String(item2.sigla).toUpperCase() == String(curso).toUpperCase()){
                 alunos.alunos.push(item)
                 status = true
             }
@@ -90,13 +90,13 @@ const listaAlunoCurso = function(curso){
     }
 }
 
-const statusAluno = function(status){
+const statusAluno = function(statusA){
     listaDeStatus = {
                         listaStatus: []
                     }
     let status2 = false
     arquivo_aluno.alunos.forEach(function(item){
-        if(item.status == status){
+        if(String(item.status).toUpperCase() == String(statusA).toUpperCase()){
             status2 = true
         }
         listaStatus =   {
@@ -105,7 +105,7 @@ const statusAluno = function(status){
             matricula: item.matricula,
             sexo: item.sexo,
             cursoAluno: '',
-            statusAluno: status        
+            statusAluno: statusA       
         }
         item.curso.forEach(function(item2){
             listaStatus.cursoAluno = item2
@@ -128,9 +128,9 @@ const cursoStatus = function(curso, status){
 
     ListaAlunos.forEach(function(item){
         item.curso.forEach(function(item2){
-        if(item2.sigla == String(curso).toUpperCase()){
+        if(String(item2.sigla).toUpperCase() == String(curso).toUpperCase()){
                 item2.disciplinas.forEach(function(item3){
-                    if(item3.status = String(status).toUpperCase()){
+                    if(String(item3.status).toUpperCase() == String(status).toUpperCase()){
                         statusTF = true
                         alunosCurso.listaAlunosStatus.push(item)
                     }
@@ -138,14 +138,11 @@ const cursoStatus = function(curso, status){
                 }
             })    
         })
-        if(statusTF){
-        return alunosCurso
+        if(statusTF == true){
+            return alunosCurso
         }else{
-            return false
+            return statusTF
         }
-        
-        
-    
 }
 
 const cursoAnoConclusao = function(curso, anoConclusao){
@@ -156,7 +153,7 @@ const cursoAnoConclusao = function(curso, anoConclusao){
 
     arquivo_aluno.alunos.forEach(function(item){
         item.curso.forEach(function(item2){
-            if(item2.sigla == String(curso).toUpperCase()){
+            if(String(item2.sigla).toUpperCase() == String(curso).toUpperCase()){
                 if(item2.conclusao == anoConclusao){
                     listaCursoAno.cursoAno.push(item)
                     status = true

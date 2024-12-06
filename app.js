@@ -52,6 +52,35 @@ app.get('/v1/lion-school/alunos', cors(), async function (request, response) {
 
 })
 
+app.get('/v1/lion-school/alunos/filtro', cors(), async function (request, response) {
+
+    let statusFC = request.query.statusA
+
+    let curso1 = request.query.curso
+
+    let statusARE = request.query.status
+
+    let conclusao = request.query.anoConclusao
+
+
+    if(statusFC != "" && statusFC != undefined){
+        let statusFimConc = alunosCursos.statusAluno(statusFC)
+        response.status(200)
+        response.json(statusFimConc)
+    }else if(curso1 != "" && curso1 != undefined && statusARE != "" && statusARE!= undefined){
+        let statusCurso = alunosCursos.cursoStatus(curso1, statusARE)
+        response.status(200)
+        response.json(statusCurso)
+    }else if(curso1 != "" && curso1 != undefined && conclusao != "" && conclusao != undefined){
+        let anoConclusao = alunosCursos.cursoAnoConclusao(curso1, conclusao)
+        response.status(200)
+        response.json(anoConclusao)
+    }else{
+        response.status(404) //Not Found
+        response.json({'status': 404, 'message': 'Não foi possivel encontrar nenhum item de retorno.'})
+    }
+})
+
 app.get('/v1/lion-school/alunos/:matricula', cors(), async function (request, response) {
 
     let uf = request.params.matricula
@@ -86,57 +115,8 @@ app.get('/v1/lion-school/alunos/cursos/:curso', cors(), async function (request,
 
 })
 
-app.get('/v1/lion-school/alunos/filtro/status', cors(), async function (request, response) {
 
-    let uf = request.query.status
 
-    let statusAluno = alunosCursos.statusAluno(uf)
-
-    if(statusAluno){
-        response.status(200) //Sucesso
-        response.json(statusAluno)
-    }else{
-        response.status(404) //Not Found
-        response.json({'status': 404, 'message': 'Não foi possivel encontrar nenhum item de retorno.'})
-    }
-
-})
-
-app.get('/v1/lion-school/alunos/filtro/curso/status', cors(), async function (request, response) {
-
-    let uf = request.query.curso
-
-    let status = request.query.status
-
-    let statusCurso = alunosCursos.cursoStatus(uf, status)
-
-    if(statusCurso){
-        response.status(200) //Sucesso
-        response.json(statusCurso)
-    }else{
-        response.status(404) //Not Found
-        response.json({'status': 404, 'message': 'Não foi possivel encontrar nenhum item de retorno.'})
-    }
-
-})
-
-app.get('/v1/lion-school/alunos/filtro/curso/ano', cors(), async function (request, response) {
-
-    let uf = request.query.curso
-
-    let conclusao = request.query.conclusao
-
-    let anoConclusao = alunosCursos.cursoAnoConclusao(uf, conclusao)
-
-    if(anoConclusao){
-        response.status(200) //Sucesso
-        response.json(anoConclusao)
-    }else{
-        response.status(404) //Not Found
-        response.json({'status': 404, 'message': 'Não foi possivel encontrar nenhum item de retorno.'})
-    }
-
-})
 
 app.listen('8080', function(){
     console.log('API aguardando requisições . . .')
