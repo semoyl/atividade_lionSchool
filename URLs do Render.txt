@@ -1,0 +1,15 @@
+URLs Do Render
+
+https://atividade-lionschool.onrender.com/v1/lion-school/cursos
+
+https://atividade-lionschool.onrender.com/v1/lion-school/alunos
+
+https://atividade-lionschool.onrender.com/v1/lion-school/alunos/{Matricula}
+
+https://atividade-lionschool.onrender.com/v1/lion-school/alunos/cursos/{Sigla-Curso}
+
+https://atividade-lionschool.onrender.com/v1/lion-school/alunos/filtro/status?status={Status}
+
+https://atividade-lionschool.onrender.com/v1/lion-school/alunos/filtro/curso/status?curso={curso} &status={Status}
+
+https://atividade-lionschool.onrender.com/v1/lionschool/alunos/filtro/curso/ano?curso={curso}&conclusao={ano-conclusao}

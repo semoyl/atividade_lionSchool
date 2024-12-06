@@ -96,7 +96,7 @@ const statusAluno = function(status){
                     }
     let status2 = false
     arquivo_aluno.alunos.forEach(function(item){
-        if(item.status == String(status).toUpperCase()){
+        if(item.status == status){
             status2 = true
         }
         listaStatus =   {
