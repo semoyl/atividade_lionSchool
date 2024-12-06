@@ -76,7 +76,7 @@ const listaAlunoCurso = function(curso){
 
     arquivo_aluno.alunos.forEach(function(item){
         item.curso.forEach(function(item2){
-            if(item2.sigla == curso){
+            if(item2.sigla == String(curso).toUpperCase()){
                 alunos.alunos.push(item)
                 status = true
             }
@@ -96,7 +96,7 @@ const statusAluno = function(status){
                     }
     let status2 = false
     arquivo_aluno.alunos.forEach(function(item){
-        if(item.status == status){
+        if(item.status == String(status).toUpperCase()){
             status2 = true
         }
         listaStatus =   {
@@ -128,9 +128,9 @@ const cursoStatus = function(curso, status){
 
     ListaAlunos.forEach(function(item){
         item.curso.forEach(function(item2){
-        if(item2.sigla == curso){
+        if(item2.sigla == String(curso).toUpperCase()){
                 item2.disciplinas.forEach(function(item3){
-                    if(item3.status = status){
+                    if(item3.status = String(status).toUpperCase()){
                         statusTF = true
                         alunosCurso.listaAlunosStatus.push(item)
                     }
@@ -156,7 +156,7 @@ const cursoAnoConclusao = function(curso, anoConclusao){
 
     arquivo_aluno.alunos.forEach(function(item){
         item.curso.forEach(function(item2){
-            if(item2.sigla == curso){
+            if(item2.sigla == String(curso).toUpperCase()){
                 if(item2.conclusao == anoConclusao){
                     listaCursoAno.cursoAno.push(item)
                     status = true
